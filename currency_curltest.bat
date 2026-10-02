@@ -1,0 +1,1 @@
+curl -s "https://api.frankfurter.dev/v1/latest?base=SGD&symbols=MYR,CNY,HKD,JPY" | python3 -m json.tool
