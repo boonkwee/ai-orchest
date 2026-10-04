@@ -55,13 +55,13 @@ def convert_currency(amount: float, to_currency: str) -> str:
     """Convert a USD amount to another currency using live exchange rates.
 
     Args:
-        amount: The amount in SGD to convert.
+        amount: The amount in USD to convert.
         to_currency: The target currency code (e.g., EUR, JPY).
     """
     to_currency = to_currency.upper().strip()
 
     try:
-        url = f"https://api.frankfurter.dev/v1/latest?base=SGD&symbols={to_currency}"
+        url = f"https://api.frankfurter.dev/v1/latest?base=USD&symbols={to_currency}"
         response = requests.get(url, timeout=10)
         response.raise_for_status()
         data = response.json()
@@ -73,7 +73,7 @@ def convert_currency(amount: float, to_currency: str) -> str:
 
         return (
             f"${amount:,.2f} USD = {converted:,.2f} {to_currency} "
-            f"(rate: 1 SGD = {rate:.4f} {to_currency}, as of {data['date']}"
+            f"(rate: 1 USD = {rate:.4f} {to_currency}, as of {data['date']}"
         )
     except requests.RequestException as e:
         return f"Error converting currency: {e}"

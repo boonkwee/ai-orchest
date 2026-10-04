@@ -1,0 +1,1 @@
+curl -X GET "https://www.goldapi.io/api/XAU/SGD" -H "x-access-token: goldapi-025fc0d4ba35f3d5cf4686f8e68db9c3-io" | python3 -m json.tool
