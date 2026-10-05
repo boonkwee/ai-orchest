@@ -34,7 +34,7 @@ def get_gold_price() -> str:
     headers = {"x-access-token": api_key}
 
     try:
-        response = requests.get(url, headers, timeout=10)
+        response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
         data = response.json()
 
@@ -144,6 +144,7 @@ def analysis_agent(state: MessagesState) -> MessagesState:
     msg_count = len(state["messages"])
     print(f" - [Analysis Agent] ({msg_count} messages in memory)")
     messages = [SystemMessage(content=ANALYSIS_PROMPT)] + state["messages"]
+    messages.append(HumanMessage(content="Based on the data and conversation above, provide your analysis."))
     response = analysis_llm.invoke(messages)
     return {"messages": [response]}
 

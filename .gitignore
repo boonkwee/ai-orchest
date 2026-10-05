@@ -1,2 +1,5 @@
 .env
+checkpoints.db
+test*.py
+yt_multi_tool_agent.py
 /test
